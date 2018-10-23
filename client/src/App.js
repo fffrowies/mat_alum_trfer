@@ -7,7 +7,9 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Material from "./components/material/Material";
+import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./components/dashboard/CreateProfile";
+// import EditProfile from "./components/dashboard/EditProfile";
 import store from "./store";
 import PrivateRoute from "./components/common/PrivateRoute";
 import setAuthToken from "./utils/setAuthToken";
@@ -45,8 +47,22 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Switch>
-                <PrivateRoute exact path="/material" component={Material} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+              </Switch>
+              {/* <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-profile"
+                  component={EditProfile}
+                />
+              </Switch> */}
             </div>
             <Footer />
           </div>

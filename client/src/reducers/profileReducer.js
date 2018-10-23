@@ -1,31 +1,31 @@
 import {
-  GET_MATERIAL,
-  MATERIAL_LOADING,
-  CLEAR_CURRENT_MATERIAL
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE
 } from "../actions/types";
 
 const initialState = {
-  material: null,
+  profile: null,
   loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case MATERIAL_LOADING:
+    case PROFILE_LOADING:
       return {
         ...state,
         loading: true
       };
-    case GET_MATERIAL:
+    case GET_PROFILE:
       return {
         ...state,
-        material: action.payload,
+        profile: action.payload,
         loading: false
       };
-    case CLEAR_CURRENT_MATERIAL:
+    case CLEAR_CURRENT_PROFILE:
       return {
         ...state,
-        material: null
+        profile: null
       };
     default:
       return state;
