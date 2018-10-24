@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
 import { getProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import isEmpty from "../../validation/is-empty";
@@ -26,10 +27,20 @@ class Dashboard extends Component {
     } else {
       // Check if loged in user has profile data
       if (Object.keys(profile).length > 0) {
+        const homework = profile.homework.map(item => (
+          <tr key={item._id}>
+            <td>{item.description}</td>
+            <td>{item.link}</td>
+            <td>
+              <Moment format="DD/MM/YYYY">{item.date}</Moment>
+            </td>
+          </tr>
+        ));
+
         dashboardContent = (
           <div>
             <div className="row">
-              <div className="col-md-5">
+              <div className="col-md-4">
                 <div className="row">
                   <div className="card card-body bg-info text-white mb-4">
                     <div className="row">
@@ -149,29 +160,20 @@ class Dashboard extends Component {
                   </a>
                 </div>
               </div>
-              <div className="col-md-7">
+              <div className="col-md-8">
                 <div className="card card-body bg-light text-dark mb-4">
                   <h1 className="display-4">Material de las Clases</h1>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Reiciendis in veniam saepe eaque dignissimos voluptate id
-                  rerum culpa, modi vero autem dolor deleniti minus aliquid!
-                  Blanditiis debitis magni eligendi assumenda tempore dolorum
-                  aliquid reprehenderit maxime beatae mollitia, repellat enim
-                  porro optio, est ad distinctio molestias possimus facilis
-                  temporibus expedita rem harum nisi? Quo iusto natus nihil nam.
-                  Tenetur labore nihil sapiente nulla neque maxime dicta beatae,
-                  ducimus, repellat esse quo? Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Saepe, mollitia temporibus quod,
-                  cumque laborum quisquam dicta odit libero dolores voluptate
-                  iure earum accusamus fuga assumenda aperiam deleniti dolorum
-                  eius nobis beatae officiis soluta perspiciatis veniam? Aliquam
-                  sit beatae quibusdam eveniet similique repudiandae dignissimos
-                  cum explicabo? Autem, voluptatum eius! Recusandae commodi aut
-                  dolorem voluptas numquam, tempore pariatur voluptatem
-                  necessitatibus dolore voluptatibus alias voluptatum nobis,
-                  molestias quam autem repellendus nemo? Praesentium illo ipsa
-                  ratione ducimus, omnis dignissimos laboriosam culpa tenetur
-                  consequuntur deserunt?
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Descripción</th>
+                        <th>Enlace</th>
+                        <th>Fecha</th>
+                        <th />
+                      </tr>
+                    </thead>
+                    {homework}
+                  </table>
                 </div>
               </div>
             </div>
