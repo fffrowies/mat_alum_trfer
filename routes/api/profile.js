@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const passport = require("passport");
+const createWTClient = require("@wetransfer/js-sdk");
+const fs = require("fs");
 
 // Load validation
 const validateProfileInput = require("../../validation/profile");
@@ -85,6 +86,49 @@ router.post(
 // @desc    Add homework to profile
 // @access  Private
 router.post(
+  // //////////
+  // // Create a promise-based function to read files.
+  // function readFile(path) {
+  //   return new Promise((resolve, reject) => {
+  //     fs.readFile(path, (error, data) => {
+  //       if (error) {
+  //         return reject(error);
+  //       }
+
+  //       resolve(data);
+  //     });
+  //   });
+  // }
+
+  // (async function() {
+  //   // This is variable, and will depend on your application.
+  //   const filePaths = ["pru1.jpg", "pru2.jpg", "pru3.jpg"];
+
+  //   // Read the content of the files, in parallel
+  //   const fileContents = await Promise.all(filePaths.map(readFile));
+
+  //   // Create the files array with names, sizes and content.
+  //   const files = filePaths.map((file, index) => {
+  //     const content = fileContents[index];
+  //     return {
+  //       name: file.split("/").pop(),
+  //       size: content.length,
+  //       content: content
+  //     };
+  //   });
+
+  //   const wtClient = await createWTClient(
+  //     "vAhXILcud48BjlLkHLFjq8FaSy6cfDvl8M2UIQDv"
+  //   );
+
+  //   const transfer = await wtClient.transfer.create({
+  //     message: "My very first transfer!",
+  //     files: files
+  //   });
+
+  //   console.log(transfer.url); // https://we.tl/t-Sa7dYYlOdF
+  // })();
+  // //////////
   "/homework",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {

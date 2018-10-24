@@ -29,8 +29,17 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         const homework = profile.homework.map(item => (
           <tr key={item._id}>
-            <td>{item.description}</td>
-            <td>{item.link}</td>
+            <td>
+              <a
+                className="text-dark p-2"
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fas fa-globe fa-1x" /> {item.description}
+              </a>
+            </td>
+
             <td>
               <Moment format="DD/MM/YYYY">{item.date}</Moment>
             </td>
@@ -42,7 +51,7 @@ class Dashboard extends Component {
             <div className="row">
               <div className="col-md-4">
                 <div className="row">
-                  <div className="card card-body bg-info text-white mb-4">
+                  <div className="card card-body bg-secondary text-white mb-4">
                     <div className="row">
                       <div className="col-4 col-md-3 m-auto">
                         <img
@@ -111,63 +120,16 @@ class Dashboard extends Component {
                     </section>
                   </div>
                 </div>
-                <div className="row">
-                  <h4 className="display-5 mb-3">Enlaces de utilidad</h4>
-                  <a
-                    className="text-dark p-2"
-                    href="http://www.saxopedia.com/transcriptions-sax/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-globe fa-1x" /> Saxopedia:
-                    Transcripciones de Solos
-                  </a>
-                  <a
-                    className="text-dark p-2"
-                    href="http://www.saxpics.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-globe fa-1x" /> Saxpics: The Vintage
-                    Saxophone Gallery
-                  </a>
-                  <a
-                    className="text-dark p-2"
-                    href="http://www.saxandwoodwind.com.au/images/Alto-sax-MP-comparison-char.gif"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-globe fa-1x" /> Vandoren: Alto Sax
-                    Mouthpiece Comparisson Chart
-                  </a>
-                  <a
-                    className="text-dark p-2"
-                    href="https://jodyjazz.com/facing-page/tenor-saxophone-mouthpiece-facing-chart/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-globe fa-1x" /> JodyJazz: Tenor Sax
-                    Mouthpiece Comparisson Chart
-                  </a>
-                  <a
-                    className="text-dark p-2"
-                    href="https://www.wfg.woodwind.org/sax/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-globe fa-1x" /> Woodwind.org: Saxophone
-                    Fingering Charts
-                  </a>
-                </div>
               </div>
               <div className="col-md-8">
                 <div className="card card-body bg-light text-dark mb-4">
-                  <h1 className="display-4">Material de las Clases</h1>
+                  <h1 className="display-5 text-center">
+                    Material de las Clases
+                  </h1>
                   <table className="table">
                     <thead>
                       <tr>
-                        <th>Descripción</th>
-                        <th>Enlace</th>
+                        <th>Descripción / Enlace</th>
                         <th>Fecha</th>
                         <th />
                       </tr>
