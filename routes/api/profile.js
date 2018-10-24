@@ -81,6 +81,27 @@ router.post(
   }
 );
 
+// @route   POST api/profile/homework
+// @desc    Add homework to profile
+// @access  Private
+router.post(
+  "/homework",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    ProfileModel.findOne({ user: req.user.id }).then(profile => {
+      const newHomework = {
+        link: req.body.link,
+        description: req.body.description
+      };
+
+      // Add to homework array
+      profile.homework.unshift(newHomework);
+
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
 // @route   DELETE api/profile
 // @desc    Delete user and profile
 // @access  Private

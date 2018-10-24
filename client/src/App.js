@@ -9,7 +9,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/dashboard/CreateProfile";
-// import EditProfile from "./components/dashboard/EditProfile";
+import EditProfile from "./components/dashboard/EditProfile";
 import store from "./store";
 import PrivateRoute from "./components/common/PrivateRoute";
 import setAuthToken from "./utils/setAuthToken";
@@ -56,13 +56,13 @@ class App extends Component {
                   component={CreateProfile}
                 />
               </Switch>
-              {/* <Switch>
+              <Switch>
                 <PrivateRoute
                   exact
                   path="/edit-profile"
                   component={EditProfile}
                 />
-              </Switch> */}
+              </Switch>
             </div>
             <Footer />
           </div>

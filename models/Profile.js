@@ -15,7 +15,8 @@ const ProfileSchema = new Schema({
     required: true
   },
   wapp: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   social: {
     facebook: {

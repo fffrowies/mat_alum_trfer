@@ -29,7 +29,7 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <div className="row">
-              <div class="col-md-5">
+              <div className="col-md-5">
                 <div className="row">
                   <div className="card card-body bg-info text-white mb-4">
                     <div className="row">
@@ -48,7 +48,7 @@ class Dashboard extends Component {
                       {profile.celphone}
                       <p className="lead text-center">
                         {isEmpty(profile.location) ? null : (
-                          <p>{profile.location}</p>
+                          <span>{profile.location}</span>
                         )}
                       </p>
                       <p className="mb-3">
@@ -149,7 +149,7 @@ class Dashboard extends Component {
                   </a>
                 </div>
               </div>
-              <div class="col-md-7">
+              <div className="col-md-7">
                 <div className="card card-body bg-light text-dark mb-4">
                   <h1 className="display-4">Material de las Clases</h1>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
