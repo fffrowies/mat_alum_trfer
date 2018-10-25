@@ -69,7 +69,7 @@ class CreateProfile extends Component {
                   info="Teléfono celular de contacto (ej. 1152559876)"
                 />
                 <InputGroup
-                  placeholder="Enalce a Perfil de Facebook"
+                  placeholder="Enlace a Perfil de Facebook"
                   name="facebook"
                   icon="fab fa-facebook"
                   value={this.state.facebook}
@@ -77,7 +77,7 @@ class CreateProfile extends Component {
                   error={errors.facebook}
                 />
                 <InputGroup
-                  placeholder="Enalce a Perfil de Twitter"
+                  placeholder="Enlace a Perfil de Twitter"
                   name="twitter"
                   icon="fab fa-twitter"
                   value={this.state.twitter}

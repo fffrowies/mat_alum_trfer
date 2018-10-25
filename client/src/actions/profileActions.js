@@ -39,8 +39,8 @@ export const getProfile = () => dispatch => {
     );
 };
 
-// Add homework
-export const addHomework = (homeworkData, history) => dispatch => {
+// Create homework
+export const createHomework = (homeworkData, history) => dispatch => {
   axios
     .post("/api/profile/homework", homeworkData)
     .then(res => history.push("/dashboard"))

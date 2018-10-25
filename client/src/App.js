@@ -10,6 +10,7 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/dashboard/CreateProfile";
 import EditProfile from "./components/dashboard/EditProfile";
+import CreateHomework from "./components/dashboard/CreateHomework";
 import store from "./store";
 import PrivateRoute from "./components/common/PrivateRoute";
 import setAuthToken from "./utils/setAuthToken";
@@ -46,6 +47,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/create-homework" component={CreateHomework} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

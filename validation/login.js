@@ -24,7 +24,3 @@ module.exports = function validateLoginInput(data) {
     isValid: isEmpty(errors)
   };
 };
-
-// devolver solo error y chequear si isEmpty en users.js
-// cuando recibe el argumento
-// hacer arrow function y exportar al final
