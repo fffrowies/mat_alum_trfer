@@ -3,13 +3,22 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
-import { createHomework } from "../../actions/profileActions";
+import SelectListGroup from "../common/SelectListGroup";
+import {
+  createHomework,
+  getUsersHomework
+} from "../../actions/homeworkActions";
 
 class CreateHomework extends Component {
   state = {
     filepath: "",
     description: "",
     user_id: "",
+    users: [
+      { label: "David Bowie", value: "123123123" },
+      { label: "Albert Sanborn", value: "567567567" },
+      { label: "Stefan Gratberg", value: "4543454345" }
+    ],
     errors: {}
   };
 
@@ -17,6 +26,10 @@ class CreateHomework extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+  }
+
+  componentWillMount() {
+    this.props.getUsersHomework();
   }
 
   handleOnChange = e => {
@@ -36,7 +49,11 @@ class CreateHomework extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors, users } = this.state;
+
+    // Select options for users
+    users.unshift({ label: "* ID de Usuario", value: 0 });
+    console.log(users);
 
     return (
       <div className="create-profile">
@@ -67,11 +84,12 @@ class CreateHomework extends Component {
                   error={errors.filepath}
                   info="Ruta del archivo a enviar"
                 />
-                <TextFieldGroup
+                <SelectListGroup
                   placeholder="* ID de Usuario"
                   name="user_id"
                   value={this.state.user_id}
                   onChange={this.handleOnChange}
+                  options={users}
                   error={errors.user_id}
                   info="Código Identificador de Usuario"
                 />
@@ -90,16 +108,15 @@ class CreateHomework extends Component {
 }
 
 CreateHomework.propTypes = {
-  profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  users: state.users,
   errors: state.errors
 });
 
 export default connect(
   mapStateToProps,
-  { createHomework }
+  { createHomework, getUsersHomework }
 )(withRouter(CreateHomework));
