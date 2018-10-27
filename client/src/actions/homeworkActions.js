@@ -26,6 +26,7 @@ export const getUsersHomework = () => dispatch => {
 
 // Create homework
 export const createHomework = (homeworkData, history) => dispatch => {
+  dispatch(setUsersHomeworkLoading());
   axios
     .post("/api/homework", homeworkData)
     .then(res => history.push("/dashboard"))
