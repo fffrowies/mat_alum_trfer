@@ -14,11 +14,6 @@ class CreateHomework extends Component {
     filepath: "",
     description: "",
     user_id: "",
-    users: [
-      { label: "David Bowie", value: "123123123" },
-      { label: "Albert Sanborn", value: "567567567" },
-      { label: "Stefan Gratberg", value: "4543454345" }
-    ],
     errors: {}
   };
 
@@ -49,11 +44,18 @@ class CreateHomework extends Component {
   };
 
   render() {
-    const { errors, users } = this.state;
+    const { errors } = this.state;
+    const users = this.props.homework.users;
 
-    // Select options for users
-    users.unshift({ label: "* ID de Usuario", value: 0 });
-    console.log(users);
+    let options = [{ label: "* ID de Usuario", value: 0 }];
+    if (users) {
+      options = users.map(({ name: label, _id: value, ...rest }) => ({
+        label,
+        value,
+        ...rest
+      }));
+      options.unshift({ label: "* ID de Usuario", value: "" });
+    }
 
     return (
       <div className="create-profile">
@@ -89,7 +91,7 @@ class CreateHomework extends Component {
                   name="user_id"
                   value={this.state.user_id}
                   onChange={this.handleOnChange}
-                  options={users}
+                  options={options}
                   error={errors.user_id}
                   info="Código Identificador de Usuario"
                 />
@@ -108,11 +110,12 @@ class CreateHomework extends Component {
 }
 
 CreateHomework.propTypes = {
+  homework: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  users: state.users,
+  homework: state.homework,
   errors: state.errors
 });
 
